@@ -65,6 +65,14 @@ void Analysis::CalcForceIndex(double price, sEMA *EMA, sEMA *lastEMA) {
 	lastEMA = EMA;
 }
 
+void Analysis::CalcMACD(double price, sEMA *firstEMA, sEMA *lastEMA, sSMA *SMA) {
+	CalcEMA(price, firstEMA);
+	CalcEMA(price, lastEMA);
+	MACD = firstEMA->EMA - lastEMA->EMA;
+	CalcSMA(price, SMA);
+	Signal = SMA->SMA;
+}
+
 Analysis::Analysis(int periodEMA, int periodSMA, int periodBearsEMA) {
 	this->SMA.sum = 0;
 	this->EMA.period = periodEMA;
