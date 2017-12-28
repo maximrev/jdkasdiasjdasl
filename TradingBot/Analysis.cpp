@@ -59,6 +59,12 @@ void Analysis::CalcDMark(sSMA *highSMA, sSMA *lowSMA) {
 	DMark = highSMA->SMA / (highSMA->SMA + lowSMA->SMA);
 }
 
+void Analysis::CalcForceIndex(double price, sEMA *EMA, sEMA *lastEMA) {
+	CalcEMA(price, EMA);
+	ForceIndex = volume * (EMA->EMA - lastEMA->EMA);
+	lastEMA = EMA;
+}
+
 Analysis::Analysis(int periodEMA, int periodSMA, int periodBearsEMA) {
 	this->SMA.sum = 0;
 	this->EMA.period = periodEMA;
