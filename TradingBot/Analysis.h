@@ -31,9 +31,11 @@ protected:
 	void CalcForceIndex(double price, sEMA *EMA, sEMA *lastEMA);
 	void CalcDMark(sSMA *highSMA, sSMA *lowSMA);
 	void CalcMACD(double price, sEMA *firstEMA, sEMA *lastEMA, sSMA *SMA);
+	void CalcMovingAverageOfOscillator();
 
 private:
 
+	double MovingAverageOfOscillator;
 	double Signal;
 	double MACD;
 	double ForceIndex;

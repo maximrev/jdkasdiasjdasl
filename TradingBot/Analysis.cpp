@@ -73,6 +73,10 @@ void Analysis::CalcMACD(double price, sEMA *firstEMA, sEMA *lastEMA, sSMA *SMA) 
 	Signal = SMA->SMA;
 }
 
+void Analysis::CalcMovingAverageOfOscillator() {
+	MovingAverageOfOscillator = MACD - Signal;
+}
+
 Analysis::Analysis(int periodEMA, int periodSMA, int periodBearsEMA) {
 	this->SMA.sum = 0;
 	this->EMA.period = periodEMA;
