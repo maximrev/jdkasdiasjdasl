@@ -13,6 +13,7 @@ struct sSMA {
 	double sum;
 	int period;
 	double SMA;
+	std::deque<double>PriceHistory;
 };
 
 class Analysis {
@@ -23,21 +24,26 @@ public:
 
 protected:
 
-	void CalcSMA(double price);
-	void CalcEMA(double price);
-	void CalcBearsPower(double price);
-	void CalcBullsPower(double price);
+	void CalcDMark(sSMA *highSMA, sSMA *lowSMA);
+	void CalcSMA(double price, sSMA *SMA);
+	void CalcEMA(double price, sEMA *EMA);
+	void CalcBearsPower(double price, sEMA *EMA);
+	void CalcBullsPower(double price, sEMA *EMA);
 
 private:
 
+	double DMark;
 	double BearsPower;
 	double BullsPower;
+	sSMA DMakSMA;
 	sSMA SMA;
 	sEMA EMA;
 	sEMA BearsEMA;
 	sEMA BullsEMA;
 
-	std::deque<double>PriceHistory;
+
 	double low;
 	double high;
+	double lasthigh;
+	double lastlow;
 };
